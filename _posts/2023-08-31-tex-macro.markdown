@@ -1,0 +1,83 @@
+---
+layout:     post
+title:      "TeX macros I use in my blog"
+categories: tutorial
+math:       true
+---
+
+When write articles containing a lot of math equations, we usually use TeX macros to simplify the notation. 
+For example, we can use `\va` to represent a vector $\va$. 
+A more complicated example is `\E_{\vx \sim p} \left[ f(\vx) \right]` which represents $\E_{\vx \sim p} \left[ f(\vx) \right]$.
+
+In this article, I will introduce the TeX macros I use in my blog.
+And tell you how to configure them in MathJax with Jekyll on Github Pages.
+
+
+<!--more-->
+
+## Configure MathJax with Jekyll on Github Pages
+
+1. Add `markdown: kramdown` field to `_config.yml`
+2. Configure MathJax in `assets/js/load-mathjax.js` (Macros should be defined here)
+3. Add MathJax block to `_includes/head.html`
+
+You can visit [my repo](https://github.com/ChaiByte/Blogs) for more details.
+
+Note we only load MathJax script when `page.math` is true.
+
+{% highlight yaml %}
+---
+layout:     post
+title:      "TeX macros I use in my blog"
+categories: tutorial
+math:       true  # note this line
+---
+{% endhighlight %}
+
+## Cheat Sheet
+
+### Math
+
+- Variables - just use default font
+  - From `a` to `z` ($a$ ~ $z$), no backslash
+- Vectors: use `\v` prefix stands for `\boldsymbol`
+  - From `\va` to `\vz` ($\va$ ~ $\vz$)
+- Matrix: use `\m` prefix stands for `\boldsymbol`
+  - From `\mA` to `\mZ` ($\mA$ ~ $\mZ$)
+- Tensor: use `\t` prefix stands for `\mathsfit`
+  - From `\tA` to `\tA` ($\tA$ ~ $\tZ$)
+- Random variables - use `\r` prefix stands for `\mathrm`
+  - From `\ra` to `\rz` ($\ra$ ~ $\rz$)
+  - Except `\rm` which is already a command
+- Random vectors - use `\rv` prefix stands for `\mathbf`
+  - From `\rva` to `\rvz` ($\rva$ ~ $\rvz$)
+- Random matrices - use `\rm` prefix stands for `\mathbf`
+  - From `\rmA` to `\rmZ` ($\rmA$ ~ $\rmZ$)
+- Graph: use `\g` prefix stands for `\mathcal`
+  - From `\gA` to `\gZ` ($\gA$ ~ $\gZ$)
+- Sets: use `\s` prefix stands for `\mathbb`
+  - From `\sA` to `\sZ` ($\sA$ ~ $\sZ$)
+  - `\R`: $\R$, real number
+  - `\N`: $\N$, natural number
+  - `\Z`: $\Z$, integer
+- Abbreviation
+  - `\E`: $\E$, expectation
+  - `\Var`: $\Var$, variance
+  - `\Cov`: $\Cov$, covariance
+  - `\eps`: $\eps$, epsilon
+  - `\ceil{x}`: $\ceil{x}$
+  - `\floor{x}`: $\floor{x}$
+
+### Color
+
+- `\red{R}\green{G}\blue{B}`: $\red{R}\green{G}\blue{B}$
+- If you want to colorize non-math text, use HTML tag
+  - `<span style="color: red">R</span><span style="color: green">G</span><span style="color: blue">B</span>`: 
+     <span style="color: red">R</span><span style="color: green">G</span><span style="color: blue">B</span>
+  - Do not make your blog too colorful, it's not good for reading.
+
+## References
+
+- [Deep Learning Book Notation](https://github.com/goodfeli/dlbook_notation/)
+- [Defining TeX macros in MathJax](https://docs.mathjax.org/en/latest/input/tex/macros.html)
+- [Mathpix](https://mathpix.com/) - a great OCR tool for math equations 👍
