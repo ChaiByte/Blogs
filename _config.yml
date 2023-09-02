@@ -23,7 +23,12 @@ email: admin@chai.ac.cn
 description: >- # this means to ignore newlines until "baseurl:"
   There are no lies in the binary world.
 
+show_excerpts: true
 markdown: kramdown
+
+header_pages:
+  - links.md
+  - archives.md
 
 # URL settings
 baseurl: ""
