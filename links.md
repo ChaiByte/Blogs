@@ -3,10 +3,6 @@ layout:     page
 title:      "Links"
 ---
 
-**Not accepting ad and friend link requests, please do not send such emails.**
-
-Common:
-
 - For readers unfamiliar with English, try [Immersive Translate](https://immersivetranslate.com/) or other similar tools.
 - [How To Ask Questions The Smart Way](http://www.catb.org/~esr/faqs/smart-questions.html) by Eric Steven Raymond
 - [ALL-about-RSS](https://github.com/AboutRSS/ALL-about-RSS): RSS tools, services, communities and tutorials, etc.

@@ -2,6 +2,7 @@
 layout:     post
 title:      "Things that we lose finally"
 categories: essay
+tags:       [Life, Writing]
 math:       false
 ---
 
