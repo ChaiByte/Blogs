@@ -3,8 +3,6 @@ layout:     page
 title:      "Archives"
 ---
 
-> The best way to understand a person is to listen to that person directly.
-
 <style type="text/css">
 .tags {
   overflow: hidden;
@@ -13,7 +11,7 @@ title:      "Archives"
 
 .tag-button {
   display: inline-block;
-  padding: 2px;
+  padding: 0px 2px;
   margin-right: 1px;
   background-color: #ECECEC;
   font-size: 0.8em;
@@ -25,15 +23,16 @@ title:      "Archives"
 {% assign categories = site.categories | sort %}
 
 <p>
-  Jump to Category 👉
+  Filter 👉
+  <a href="#" class="category-link" id="show-all">[All]</a>
   {% for category in categories %}
-    <a href="#{{ category[0] | slugify }}">[{{ category[0] | capitalize }}]</a>
+    <a href="#{{ category[0] | slugify }}" class="category-link">[{{ category[0] | capitalize }}]</a>
   {% endfor %}
 </p>
 
 <div>
   {% for category in categories %}
-    <h2>{{ category[0] | capitalize }}</h2> <!-- 这会显示分类的名称 -->
+    <h2 id="{{ category[0] | slugify }}">{{ category[0] | capitalize }}</h2>
     <ul>
       {% for post in category[1] %}
         <li>
@@ -51,3 +50,47 @@ title:      "Archives"
     </ul>
   {% endfor %}
 </div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  var categoryLinks = document.querySelectorAll(".category-link");
+  var categories = document.querySelectorAll("h2");
+
+  categoryLinks.forEach(function (link) {
+    link.addEventListener("click", function (event) {
+      event.preventDefault();
+
+      var targetCategory = link.getAttribute("href").substring(1);
+
+      function showCategory(category) {
+        category.style.display = "block";
+        var targetList = category.nextElementSibling;
+        if (targetList && targetList.tagName === "UL") {
+          targetList.style.display = "block";
+        }
+      }
+
+      function hideCategory(category) {
+        category.style.display = "none";
+        var otherList = category.nextElementSibling;
+        if (otherList && otherList.tagName === "UL") {
+          otherList.style.display = "none";
+        }
+      }
+
+      if (targetCategory === "") { // Check if it's the "All" link
+        categories.forEach(showCategory);
+      } else {
+        categories.forEach(function (category) {
+          if (category.id === targetCategory) {
+            showCategory(category);
+          } else {
+            hideCategory(category);
+          }
+        });
+      }
+    });
+  });
+});
+
+</script>
